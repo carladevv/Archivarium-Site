@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 import translations from "./translations.json";
+import { MonitorSmartphone, ChartLine, PencilRuler, Users, Palette } from "lucide-react";
 
 // ——— Proyecto Archivarium — Sleek/Modern pass on user-attached app ———
 // Brief: apply the clean, modern style (no rounded corners, no chunky borders,
@@ -174,8 +175,7 @@ export default function App() {
 
           <hr className="my-10" />
 
-          {/* Features — minimalist list with thin left rule matching an accent */}
-{/* Features — each item in its own soft block */}
+          {/* Features — horizontal layout with icon before colored rule */}
 <section aria-labelledby="features-title" className="space-y-6">
   <h2 id="features-title" className="font-serif text-xl font-semibold">
     {t.featuresTitle}
@@ -184,24 +184,45 @@ export default function App() {
   <ul className="space-y-4">
     {t.features.map((f, i) => {
       const a = ACCENTS[i % ACCENTS.length];
+      const icons = [MonitorSmartphone, PencilRuler, Users, Palette, ChartLine];
+      const Icon = icons[i % icons.length];
+
       return (
         <li
           key={f.title}
-          className="p-5"
-          style={{
-            backgroundColor: COLORS.surface,
-            borderLeft: `1px solid ${a.bg}`,
-          }}
+          className="flex items-center gap-6"
+          style={{ alignItems: "center" }} // ensures vertical centering
         >
-          <h3
-            className="font-medium text-base mb-1"
-            style={{ color: COLORS.text }}
+          {/* Icon column */}
+          <div
+            className="flex-shrink-0 flex items-center justify-center"
+            style={{ height: "100%" }}
           >
-            {f.title}
-          </h3>
-          <p className="text-sm" style={{ color: COLORS.textMuted }}>
-            {f.desc}
-          </p>
+            <Icon
+              size={20}
+              strokeWidth={1.8}
+              style={{ color: a.bg, flexShrink: 0 }}
+              aria-hidden="true"
+            />
+          </div>
+
+          {/* Text block with left accent line */}
+          <div
+            className="flex-1 pl-6 pt-2 pb-2"
+            style={{
+              borderLeft: `2px solid ${a.bg}`,
+            }}
+          >
+            <h3
+              className="font-medium text-base mb-1"
+              style={{ color: COLORS.text }}
+            >
+              {f.title}
+            </h3>
+            <p className="text-sm" style={{ color: COLORS.textMuted }}>
+              {f.desc}
+            </p>
+          </div>
         </li>
       );
     })}
