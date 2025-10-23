@@ -42,26 +42,26 @@ const YEAR_CREATED = 2024;
 
 const CheckIcon = () => (
   <svg aria-hidden className="h-5 w-5 flex-none" viewBox="0 0 20 20" fill="currentColor" style={{ color: COLORS.heading }}>
-    <path fillRule="evenodd" d="M16.704 5.29a1 1 0 010 1.42l-7.5 7.5a1 1 0 01-1.414 0l-3-3a1 1 0 111.414-1.42l2.293 2.294 6.793-6.794a1 1 0 011.414 0z" clipRule="evenodd"/>
+    <path fillRule="evenodd" d="M16.704 5.29a1 1 0 010 1.42l-7.5 7.5a1 1 0 01-1.414 0l-3-3a1 1 0 111.414-1.42l2.293 2.294 6.793-6.794a1 1 0 011.414 0z" clipRule="evenodd" />
   </svg>
 );
 
 const MailIcon = () => (
   <svg aria-hidden className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" style={{ color: COLORS.text }}>
-    <path d="M2 6a2 2 0 012-2h16a2 2 0 012 2v.511l-10 5.5-10-5.5V6zm0 2.236v9.764A2 2 0 004 20h16a2 2 0 002-2V8.236l-9.445 5.195a2 2 0 01-2.11 0L2 8.236z"/>
+    <path d="M2 6a2 2 0 012-2h16a2 2 0 012 2v.511l-10 5.5-10-5.5V6zm0 2.236v9.764A2 2 0 004 20h16a2 2 0 002-2V8.236l-9.445 5.195a2 2 0 01-2.11 0L2 8.236z" />
   </svg>
 );
 
 const ArrowRight = () => (
   <svg aria-hidden className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" style={{ color: COLORS.text }}>
-    <path d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z"/>
+    <path d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z" />
   </svg>
 );
 
 const GlobeIcon = () => (
   <svg aria-hidden className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <circle cx="12" cy="12" r="10"/>
-    <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+    <circle cx="12" cy="12" r="10" />
+    <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
   </svg>
 );
 
@@ -175,25 +175,40 @@ export default function App() {
           <hr className="my-10" />
 
           {/* Features — minimalist list with thin left rule matching an accent */}
-          <section aria-labelledby="features-title" className="space-y-6">
-            <h2 id="features-title" className="font-serif text-xl font-semibold">{t.featuresTitle}</h2>
-            <ul className="space-y-3">
-              {t.features.map((f, i) => {
-                const a = accentAt(i);
-                return (
-                  <li key={f.title} className="flex gap-3 py-3 pl-4" style={{ borderLeft: `2px solid ${a.bg}` }}>
-                    <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center" style={{ color: COLORS.heading }}>
-                      <CheckIcon />
-                    </span>
-                    <div>
-                      <p className="font-medium" style={{ color: COLORS.text }}>{f.title}</p>
-                      <p className="text-sm" style={{ color: COLORS.textMuted }}>{f.desc}</p>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-          </section>
+{/* Features — each item in its own soft block */}
+<section aria-labelledby="features-title" className="space-y-6">
+  <h2 id="features-title" className="font-serif text-xl font-semibold">
+    {t.featuresTitle}
+  </h2>
+
+  <ul className="space-y-4">
+    {t.features.map((f, i) => {
+      const a = ACCENTS[i % ACCENTS.length];
+      return (
+        <li
+          key={f.title}
+          className="p-5"
+          style={{
+            backgroundColor: COLORS.surface,
+            borderLeft: `1px solid ${a.bg}`,
+          }}
+        >
+          <h3
+            className="font-medium text-base mb-1"
+            style={{ color: COLORS.text }}
+          >
+            {f.title}
+          </h3>
+          <p className="text-sm" style={{ color: COLORS.textMuted }}>
+            {f.desc}
+          </p>
+        </li>
+      );
+    })}
+  </ul>
+</section>
+
+
 
           <hr className="my-10" />
 
@@ -211,20 +226,36 @@ export default function App() {
           <hr className="my-10" />
 
           {/* Team — flat list separated by hairline dividers */}
-          <section aria-labelledby="team-title" className="space-y-0">
-            <h2 id="team-title" className="mb-4 font-serif text-xl font-semibold">{t.teamTitle}</h2>
-            <div className="divide-y" style={{ borderColor: COLORS.divider }}>
-              {t.teamMembers.map((member, idx) => (
-                <article key={idx} className="flex items-start gap-4 py-4">
-                  <div className="h-12 w-12 grid place-items-center text-sm font-semibold" style={{ backgroundColor: COLORS.surface, color: COLORS.textMuted }}>
+          <section aria-labelledby="team-title" className="space-y-6">
+            <h2 id="team-title" className="font-serif text-xl font-semibold">
+              {t.teamTitle}
+            </h2>
+            <div
+              className="p-6"
+              style={{
+                backgroundColor: COLORS.surface,
+              }}
+            >
+              {t.teamMembers.map((member: any, idx: number) => (
+                <article key={idx} className={`flex items-start gap-4 ${idx !== t.teamMembers.length - 1 ? 'mb-6 pb-6 border-b' : ''}`} style={{ borderColor: COLORS.divider }}>
+                  <div
+                    className="h-12 w-12 grid place-items-center text-sm font-semibold"
+                    style={{ backgroundColor: COLORS.surfaceMuted, color: COLORS.textMuted }}
+                  >
                     {member.initials}
                   </div>
                   <div className="flex-1">
                     <h3 className="font-medium" style={{ color: COLORS.text }}>{member.name}</h3>
                     <p className="text-sm" style={{ color: COLORS.textMuted }}>{member.role}</p>
                     <p className="mt-2 text-sm">
-                      <a className="inline-flex items-center gap-1 underline underline-offset-4" href={member.linkedin} target="_blank" rel="noopener noreferrer">
-                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                      <a
+                        className="inline-flex items-center gap-1 underline underline-offset-4"
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: COLORS.link }}
+                      >
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" /></svg>
                         {t.linkedinLabel}
                       </a>
                     </p>
