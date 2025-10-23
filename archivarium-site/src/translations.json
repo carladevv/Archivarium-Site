@@ -1,0 +1,182 @@
+{
+  "ES": {
+    "badge": "Patrimonio · Cultura · Educación",
+    "title": "Proyecto Archivarium",
+    "tagline": "¡El museo virtual interactivo que se adapta a cualquier colección!",
+    "featuresTitle": "Características",
+    "features": [
+      {
+        "title": "Experiencia 3D en web",
+        "desc": "Los usuarios acceden al museo virtual con un solo clic desde navegador de escritorio o móvil."
+      },
+      {
+        "title": "Cambios al vuelo",
+        "desc": "Realiza cualquier modificación desde el panel de administrador, ¡el museo se adaptará al instante!"
+      },
+      {
+        "title": "Trabaja en equipo",
+        "desc": "Múltiples investigadores con diversos roles pueden colaborar en la administración de un mismo museo."
+      },
+      {
+        "title": "Control completo",
+        "desc": "El diseño modular del museo virtual permite elegir entre distintos estilos arquitectónicos en el panel de administrador."
+      },
+      {
+        "title": "Analiza el impacto",
+        "desc": "Echa un vistazo a las estadísticas anónimas de uso en el panel de administrador."
+      }
+    ],
+    "snapshotsTitle": "El Museo Virtual",
+    "snapshotsDesc": "El tamaño y la distribución del museo virtual se adaptan a los modelos 3D de tu colección.",
+    "teamTitle": "Conoce al equipo",
+    "teamMembers": [
+      {
+        "initials": "NCC",
+        "name": "Nadina Carla Cardillo",
+        "role": "Desarrolladora · Con más de 3 años de experiencia en el desarrollo web y la creación de 'serious games', Carla es la responsable del lado técnico de la aplicación mediante el uso de las librerías Node.js, ReactJS, Three.js y MongoDB.",
+        "linkedin": "https://www.linkedin.com/in/nadina-carla-cardillo-garreta/"
+      },
+      {
+        "initials": "LGM",
+        "name": "Laura Gómez Morgado",
+        "role": "Restauradora · Laura aporta su amplia experiencia en restauración y digitalización de bienes culturales para asegurar el rigor científico y el diseño visual de la aplicación.",
+        "linkedin": "https://www.linkedin.com/in/lauragmorgado/"
+      }
+    ],
+    "linkedinLabel": "Ver perfil en LinkedIn",
+    "ctaTitle": "¿Interesado en trabajar con nosotros?",
+    "ctaDesc": "Envíanos una nota. Te responderemos en un día.",
+    "formName": "Nombre",
+    "formNamePlaceholder": "Ada Lovelace",
+    "formEmail": "Correo electrónico",
+    "formEmailPlaceholder": "ada@example.com",
+    "formMessage": "Mensaje",
+    "formMessagePlaceholder": "Cuéntanos un poco sobre tu proyecto…",
+    "formSubmit": "Enviar correo",
+    "formSent": "Abriendo tu cliente de correo…",
+    "formDisclaimer": "Al hacer clic en Enviar, tu aplicación de correo predeterminada se abre con un mensaje prellenado a",
+    "footerCopyright": "Todos los derechos reservados.",
+    "emailSubject": "Nueva consulta de",
+    "emailBody": "Nombre:\nCorreo electrónico:\n\nMensaje:\n\n— Enviado desde el sitio de Proyecto Archivarium"
+  },
+  "EN": {
+    "badge": "Heritage · Culture · Education",
+    "title": "Archivarium Project",
+    "tagline": "The interactive virtual museum that adapts to any collection!",
+    "featuresTitle": "Features",
+    "features": [
+      {
+        "title": "Web 3D Experience",
+        "desc": "Users access the virtual museum with one click from desktop or mobile browser."
+      },
+      {
+        "title": "Real-time Changes",
+        "desc": "Make any modification from the admin panel - the museum adapts instantly!"
+      },
+      {
+        "title": "Team Collaboration",
+        "desc": "Multiple researchers with different roles can collaborate in managing the same museum."
+      },
+      {
+        "title": "Full Control",
+        "desc": "The modular design of the virtual museum allows choosing between different architectural styles in the admin panel."
+      },
+      {
+        "title": "Analyze Impact",
+        "desc": "Take a look at anonymous usage statistics in the admin panel."
+      }
+    ],
+    "snapshotsTitle": "The Virtual Museum",
+    "snapshotsDesc": "The size and layout of the virtual museum adapt to the 3D models of your collection.",
+    "teamTitle": "Meet the Team",
+    "teamMembers": [
+      {
+        "initials": "NCC",
+        "name": "Nadina Carla Cardillo",
+        "role": "Developer · With over 3 years of experience in web development and creating 'serious games', Carla is responsible for the technical side of the application using Node.js, ReactJS, Three.js and MongoDB libraries.",
+        "linkedin": "https://www.linkedin.com/in/nadina-carla-cardillo-garreta/"
+      },
+      {
+        "initials": "LGM",
+        "name": "Laura Gómez Morgado",
+        "role": "Restorer · Laura brings her extensive experience in restoration and digitization of cultural assets to ensure scientific rigor and visual design of the application.",
+        "linkedin": "https://www.linkedin.com/in/lauragmorgado/"
+      }
+    ],
+    "linkedinLabel": "View profile on LinkedIn",
+    "ctaTitle": "Interested in working with us?",
+    "ctaDesc": "Send us a note. We'll get back to you within a day.",
+    "formName": "Name",
+    "formNamePlaceholder": "Ada Lovelace",
+    "formEmail": "Email",
+    "formEmailPlaceholder": "ada@example.com",
+    "formMessage": "Message",
+    "formMessagePlaceholder": "Tell us a bit about your project…",
+    "formSubmit": "Send email",
+    "formSent": "Opening your email client…",
+    "formDisclaimer": "By clicking Send, your default email app opens with a pre-filled message to",
+    "footerCopyright": "All rights reserved.",
+    "emailSubject": "New inquiry from",
+    "emailBody": "Name:\nEmail:\n\nMessage:\n\n— Sent from the Archivarium Project site"
+  },
+  "CA": {
+    "badge": "Patrimoni · Cultura · Educació",
+    "title": "Projecte Archivarium",
+    "tagline": "El museu virtual interactiu que s'adapta a qualsevol col·lecció!",
+    "featuresTitle": "Característiques",
+    "features": [
+      {
+        "title": "Experiència 3D al web",
+        "desc": "Els usuaris accedeixen al museu virtual amb un sol clic des del navegador d'escriptori o mòbil."
+      },
+      {
+        "title": "Canvis en temps real",
+        "desc": "Fes qualsevol modificació des del panell d'administrador - el museu s'adaptarà instantàniament!"
+      },
+      {
+        "title": "Treball en equip",
+        "desc": "Múltiples investigadors amb diversos rols poden col·laborar en l'administració d'un mateix museu."
+      },
+      {
+        "title": "Control complet",
+        "desc": "El disseny modular del museu virtual permet triar entre diferents estils arquitectònics al panell d'administrador."
+      },
+      {
+        "title": "Analitza l'impacte",
+        "desc": "Fes un cop d'ull a les estadístiques anònimes d'ús al panell d'administrador."
+      }
+    ],
+    "snapshotsTitle": "El Museu Virtual",
+    "snapshotsDesc": "La mida i la distribució del museu virtual s'adapten als models 3D de la teva col·lecció.",
+    "teamTitle": "Coneix l'equip",
+    "teamMembers": [
+      {
+        "initials": "NCC",
+        "name": "Nadina Carla Cardillo",
+        "role": "Desenvolupadora · Amb més de 3 anys d'experiència en el desenvolupament web i la creació de 'serious games', Carla és la responsable de la part tècnica de l'aplicació mitjançant l'ús de les llibreries Node.js, ReactJS, Three.js i MongoDB.",
+        "linkedin": "https://www.linkedin.com/in/nadina-carla-cardillo-garreta/"
+      },
+      {
+        "initials": "LGM",
+        "name": "Laura Gómez Morgado",
+        "role": "Restauradora · Laura aporta la seva àmplia experiència en restauració i digitalització de béns culturals per assegurar el rigor científic i el disseny visual de l'aplicació.",
+        "linkedin": "https://www.linkedin.com/in/lauragmorgado/"
+      }
+    ],
+    "linkedinLabel": "Veure perfil a LinkedIn",
+    "ctaTitle": "Interessat en treballar amb nosaltres?",
+    "ctaDesc": "Envia'ns una nota. Et respondrem en un dia.",
+    "formName": "Nom",
+    "formNamePlaceholder": "Ada Lovelace",
+    "formEmail": "Correu electrònic",
+    "formEmailPlaceholder": "ada@example.com",
+    "formMessage": "Missatge",
+    "formMessagePlaceholder": "Explica'ns una mica sobre el teu projecte…",
+    "formSubmit": "Envia correu",
+    "formSent": "Obrint el teu client de correu…",
+    "formDisclaimer": "En fer clic a Envia, la teva aplicació de correu predeterminada s'obre amb un missatge preomplert a",
+    "footerCopyright": "Tots els drets reservats.",
+    "emailSubject": "Nova consulta de",
+    "emailBody": "Nom:\nCorreu electrònic:\n\nMissatge:\n\n— Enviat des del lloc del Projecte Archivarium"
+  }
+}
