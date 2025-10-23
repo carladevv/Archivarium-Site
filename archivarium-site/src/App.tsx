@@ -41,12 +41,6 @@ export const COLORS = {
 const CONTACT_EMAIL = "nadinaccg@gmail.com";
 const YEAR_CREATED = 2024;
 
-const CheckIcon = () => (
-  <svg aria-hidden className="h-5 w-5 flex-none" viewBox="0 0 20 20" fill="currentColor" style={{ color: COLORS.heading }}>
-    <path fillRule="evenodd" d="M16.704 5.29a1 1 0 010 1.42l-7.5 7.5a1 1 0 01-1.414 0l-3-3a1 1 0 111.414-1.42l2.293 2.294 6.793-6.794a1 1 0 011.414 0z" clipRule="evenodd" />
-  </svg>
-);
-
 const MailIcon = () => (
   <svg aria-hidden className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" style={{ color: COLORS.text }}>
     <path d="M2 6a2 2 0 012-2h16a2 2 0 012 2v.511l-10 5.5-10-5.5V6zm0 2.236v9.764A2 2 0 004 20h16a2 2 0 002-2V8.236l-9.445 5.195a2 2 0 01-2.11 0L2 8.236z" />
@@ -87,7 +81,7 @@ export default function App() {
     setSent(true);
   }
 
-  const accentAt = (i: number) => ACCENTS[i % ACCENTS.length];
+  // const accentAt = (i: number) => ACCENTS[i % ACCENTS.length];
 
   const languages: { code: Language; label: string }[] = [
     { code: "ES", label: "Español" },
