@@ -1,470 +1,153 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import translations from "./translations.json";
-import { MonitorSmartphone, ChartLine, PencilRuler, Users, Palette } from "lucide-react";
-import BackgroundMosaic from "./BackgroundMosaic";
-
-// ——— Proyecto Archivarium — Sleek/Modern pass on user-attached app ———
-// Brief: apply the clean, modern style (no rounded corners, no chunky borders,
-// minimal/no shadows, elegant spacing) to THIS version with translations + language menu.
-
-// Keep the user's palette as-is
-type Language = "ES" | "EN" | "CA";
-const ACCENTS = [
-  { bg: "#d46d29ff", text: "#FFFFFF" }, // terracotta orange
-  { bg: "#A68A64", text: "#1C1C1C" }, // bronze beige
-  { bg: "#bd9877ff", text: "#1C1C1C" }, // pale clay
-  { bg: "#858585ff", text: "#FFFFFF" }, // neutral gray
-];
-
-export const COLORS = {
-  // base
-  bg: "#F5F4F2",            // light warm gray background (main column)
-  outerBg: "#2e2e2eff",       // slightly darker outer background
-  text: "#2B2B2B",          // main body text
-  textMuted: "#5E5E5E",     // muted gray
-  heading: "#3b2d1cff",       // orange for highlights
-  link: "#953e04",          // warm rust-orange link
-  linkHover: "#8C3F00",     // darker hover
-
-  // surfaces / structure
-  surface: "#FFFFFF",       // cards, panels
-  surfaceMuted: "#F0EDEB",  // inputs
-  border: "#515050ff",      // hairline borders
-  divider: "#C6C2BC",       // subtle separators
-  shadow: "rgba(0, 0, 0, 0.06)", // very soft (almost flat)
-
-  // states
-  focus: "#E8630A",
-  selectionBg: "#E8630A",
-  selectionText: "#FFFFFF",
-};
-
-const CONTACT_EMAIL = "nadinaccg@gmail.com";
-const YEAR_CREATED = 2024;
-
-const MailIcon = () => (
-  <svg aria-hidden className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" style={{ color: COLORS.text }}>
-    <path d="M2 6a2 2 0 012-2h16a2 2 0 012 2v.511l-10 5.5-10-5.5V6zm0 2.236v9.764A2 2 0 004 20h16a2 2 0 002-2V8.236l-9.445 5.195a2 2 0 01-2.11 0L2 8.236z" />
-  </svg>
-);
-
-const ArrowRight = () => (
-  <svg aria-hidden className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" style={{ color: COLORS.text }}>
-    <path d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z" />
-  </svg>
-);
-
-const GlobeIcon = () => (
-  <svg aria-hidden className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <circle cx="12" cy="12" r="10" />
-    <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
-  </svg>
-);
-
-type Translations = typeof translations;
+import BackgroundMosaic from "./components/layout/BackgroundMosaic";
+import LanguageMenu from "./components/layout/LanguageMenu";
+import Hero from "./components/sections/Hero";
+import Description from "./components/sections/Description";
+import Carousel from "./components/sections/Carousel";
+import Features from "./components/sections/Features";
+import Gallery from "./components/sections/Gallery";
+import Team from "./components/sections/Team";
+import Contact from "./components/sections/Contact";
+import Footer from "./components/sections/Footer";
+import { COLORS, type Language, type Translations, YEAR_CREATED } from "./theme";
 
 export default function App() {
   const year = useMemo(() => new Date().getFullYear(), []);
   const [lang, setLang] = useState<Language>("ES");
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [sent, setSent] = useState(false);
-  const [langMenuOpen, setLangMenuOpen] = useState(false);
 
   const t = (translations as Translations)[lang];
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const subject = encodeURIComponent(`${t.emailSubject} ${form.name || "someone"}`);
-    const body = encodeURIComponent(
-      `${t.emailBody.replace("Nombre:", form.name).replace("Correo electrónico:", form.email).replace("Mensaje:", form.message)}`
-    );
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-    setSent(true);
-  }
-
-  // const accentAt = (i: number) => ACCENTS[i % ACCENTS.length];
-
-  const languages: { code: Language; label: string }[] = [
-    { code: "ES", label: "Español" },
-    { code: "EN", label: "English" },
-    { code: "CA", label: "Català" },
-  ];
-
   return (
     <main
-      // Outer canvas with a subtle contrast from the inner column — flat, no rounded corners
       className="min-h-dvh antialiased relative"
-      style={{
-        backgroundColor: COLORS.outerBg,
-        color: COLORS.text,
-        //fontFamily: "'Source Sans 3', sans-serif", // 👈 your chosen body font
-      }}
+      style={{ backgroundColor: COLORS.outerBg, color: COLORS.text }}
     >
-
       <BackgroundMosaic />
-      {/* Global theme (selection, links, placeholders) */}
-      {/* Global theme (selection, links, placeholders, scrollbar) */}
+
+      {/* —— Global + unified styles */}
       <style>{`
-        ::selection{background:${COLORS.selectionBg};color:${COLORS.selectionText}}
-        a{color:${COLORS.link};text-underline-offset:3px}
-        a:hover{color:${COLORS.linkHover}}
-        ::placeholder{color:${COLORS.textMuted};opacity:0.6}
-        hr{border:0;border-top:1px solid ${COLORS.divider}}
+        /* Theme tokens */
+        :root{
+          --bg:${COLORS.bg};
+          --outer-bg:${COLORS.outerBg};
+          --text:${COLORS.text};
+          --text-muted:${COLORS.textMuted};
+          --heading:${COLORS.heading};
+          --link:${COLORS.link};
+          --link-hover:${COLORS.linkHover};
+          --surface:${COLORS.surface};
+          --surface-muted:${COLORS.surfaceMuted};
+          --border:${COLORS.border};
+          --divider:${COLORS.divider};
+          --shadow:${COLORS.shadow};
+          --focus:${COLORS.focus};
+          --sel-bg:${COLORS.selectionBg};
+          --sel-text:${COLORS.selectionText};
+        }
+
+        /* Global primitives */
+        ::selection{background:var(--sel-bg);color:var(--sel-text)}
+        a{color:var(--link);text-underline-offset:3px}
+        a:hover{color:var(--link-hover)}
+        ::placeholder{color:var(--text-muted);opacity:0.6}
+        hr{border:0;border-top:1px solid var(--divider)}
+
+        /* Reusable text styles */
+        .h1{
+          color:var(--heading);
+          font-family:'Ubuntu Sans',sans-serif;
+          font-weight:800;
+          line-height:1.1;
+          letter-spacing:.02em;
+          text-transform:uppercase;
+        }
+        .h2{
+          font-family:'Ubuntu Sans',sans-serif;
+          font-weight:600;
+          font-size:1.25rem; /* ~text-xl */
+          color:var(--text);
+          text-transform:uppercase;
+        }
+        .label{
+          font-family:'Ubuntu Sans',sans-serif;
+          font-weight:600;
+          font-size:.875rem; /* text-sm */
+          color:var(--text);
+        }
+        .muted{ color:var(--text-muted); }
+
+        /* Components */
+        .badge{
+          background:var(--surface);
+          border:1px solid var(--divider);
+          color:var(--text);
+          font-family:'Ubuntu Sans',sans-serif;
+          font-weight:600;
+          text-transform:uppercase;
+          letter-spacing:.12em;
+          font-size:11px;
+          padding:.25rem .5rem;
+          display:inline-flex;
+          align-items:center;
+          gap:.5rem;
+        }
+        .btn-primary{
+          background:var(--heading);
+          color:var(--sel-text);
+          display:inline-flex;
+          align-items:center;
+          gap:.5rem;
+          font-weight:600;
+          font-size:.875rem;
+          padding:.5rem 1rem;
+        }
+        .input, .textarea{
+          background:var(--surface-muted);
+          border:1px solid var(--border);
+          color:var(--text);
+          outline:none;
+          transition:border-color .15s ease;
+        }
+        .input:focus, .textarea:focus{ border-color:var(--focus); }
+
+        /* Containers */
+        .main-col{ background:var(--bg); }
+        .card{ background:var(--surface); }
+        .section{ margin-block:2.5rem; } /* ~my-10 */
       `}</style>
 
-      {/* Language selector — minimal button (square, hairline border, no shadow) */}
+      {/* Language selector */}
       <div className="fixed top-4 right-4 z-50">
-        <div className="relative">
-          <button
-            onClick={() => setLangMenuOpen(!langMenuOpen)}
-            className="flex items-center gap-2 px-3 py-2 text-sm font-medium"
-            style={{
-              backgroundColor: COLORS.surface,
-              border: `1px solid ${COLORS.border}`,
-              color: COLORS.text,
-            }}
-            aria-label="Select language"
-            aria-expanded={langMenuOpen}
-          >
-            <GlobeIcon />
-            {lang}
-          </button>
-
-          {langMenuOpen && (
-            <>
-              <div className="fixed inset-0 z-40" onClick={() => setLangMenuOpen(false)} />
-              <div
-                className="absolute right-0 mt-2 w-36 overflow-hidden z-50"
-                style={{ backgroundColor: COLORS.surface, border: `1px solid ${COLORS.border}` }}
-              >
-                {languages.map((l) => (
-                  <button
-                    key={l.code}
-                    onClick={() => { setLang(l.code); setLangMenuOpen(false); }}
-                    className="w-full px-3 py-2 text-left text-sm transition"
-                    style={{ background: lang === l.code ? COLORS.surfaceMuted : "transparent", color: COLORS.text }}
-                    onMouseEnter={(e) => { if (lang !== l.code) e.currentTarget.style.background = COLORS.surfaceMuted; }}
-                    onMouseLeave={(e) => { if (lang !== l.code) e.currentTarget.style.background = "transparent"; }}
-                  >
-                    {l.label}
-                  </button>
-                ))}
-              </div>
-            </>
-          )}
-        </div>
+        <LanguageMenu lang={lang} onChange={setLang} />
       </div>
 
-      {/* Main column — full height, ~60% width, square, flat */}
-      <div className="mx-auto min-h-dvh md:w-[60vw] relative z-10" style={{ backgroundColor: COLORS.bg }}>
+      {/* Main column */}
+      <div className="mx-auto min-h-dvh md:w-[60vw] relative z-10 main-col">
         <div className="w-full px-4 sm:px-6 py-14 sm:py-10">
 
-          {/* Hero Section */}
-          <header className="text-center">
-            <div
-              className="mx-auto mb-4 inline-flex items-center gap-2 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]"
-              style={{
-                backgroundColor: COLORS.surface,
-                border: `1px solid ${COLORS.divider}`,
-                color: COLORS.text,
-                fontFamily: "'Ubuntu Sans', sans-serif",
-                fontWeight: 600,
-              }}
-            >
-              {t.badge}
-            </div>
-
-            {/* Logo */}
-            <img
-              src="/logos/archivarium_logo_2.png"
-              alt="Proyecto Archivarium logo"
-              className="mx-auto mb-2 h-32 w-auto"
-            />
-
-            {/* Title */}
-            <h1
-              className="text-5xl sm:text-7xl font-extrabold leading-[1.1] tracking-wide"
-              style={{
-                color: COLORS.heading,
-                fontFamily: "'Ubuntu Sans', sans-serif",
-                textTransform: "uppercase",
-              }}
-            >
-              {t.title.toUpperCase()}
-            </h1>
-
-            {/* Tagline */}
-            <p
-              className="mt-4 mb-6 text-lg sm:text-xl tracking-wide"
-              style={{
-                color: COLORS.textMuted,
-                fontFamily: "'Source Sans 3', sans-serif",
-                fontWeight: 400,
-              }}
-            >
-              {t.tagline}
-            </p>
-          </header>
-
-
+          <Hero t={t} />
 
           <hr className="my-10" />
-
-          {/* Description — renders all paragraphs from translations.description */}
-          <section
-            aria-label="description"
-            className="leading-relaxed py-2 pb-8 text-m sm:text-lg"
-            style={{
-              color: COLORS.textMuted,
-            }}
-          >
-            {Object.values(t.description).map((para: string, idx: number) => (
-              <p key={idx} className={idx < Object.values(t.description).length - 1 ? "mb-4" : ""}>
-                {para}
-              </p>
-            ))}
-          </section>
-
-
-
-          {/* Features — horizontal layout with icon before colored rule */}
-          <section aria-labelledby="features-title" className="space-y-6">
-            <h2
-              id="features-title"
-              className="font-serif text-xl font-semibold"
-              style={{
-                fontFamily: "'Ubuntu Sans', sans-serif",
-                fontWeight: 600,
-              }}
-            >
-              {t.featuresTitle.toUpperCase()}
-            </h2>
-
-            <ul className="space-y-4">
-              {t.features.map((f, i) => {
-                const a = ACCENTS[i % ACCENTS.length];
-                const icons = [MonitorSmartphone, PencilRuler, Users, Palette, ChartLine];
-                const Icon = icons[i % icons.length];
-
-                return (
-                  <li
-                    key={f.title}
-                    className="flex items-center gap-6"
-                    style={{ alignItems: "center" }}
-                  >
-                    {/* Icon column — doubled horizontal padding */}
-                    <div
-                      className="flex-shrink-0 flex items-center justify-center px-4"
-                      style={{ height: "100%" }}
-                    >
-                      <Icon
-                        size={20}
-                        strokeWidth={1.8}
-                        style={{ color: a.bg, flexShrink: 0 }}
-                        aria-hidden="true"
-                      />
-                    </div>
-
-                    {/* Text block with left accent line */}
-                    <div
-                      className="flex-1 pl-6 pt-2 pb-2"
-                      style={{
-                        borderLeft: `2px solid ${a.bg}`,
-                      }}
-                    >
-                      <h3
-                        className="font-medium text-base mb-1"
-                        style={{
-                          color: COLORS.text,
-                          fontFamily: "'Ubuntu Sans', sans-serif",
-                          fontWeight: 400,
-                        }}
-                      >
-                        {f.title.toUpperCase()}
-                      </h3>
-                      <p className="text-sm" style={{ color: COLORS.textMuted }}>
-                        {f.desc}
-                      </p>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-          </section>
-
-
-
+          <Description t={t} />
 
           <hr className="my-10" />
-
-          {/* Gallery — edge-to-edge images, flat */}
-          <section aria-labelledby="gallery-title" className="space-y-4">
-            <h2
-              id="gallery-title"
-              className="font-serif text-xl font-semibold"
-              style={{
-                fontFamily: "'Ubuntu Sans', sans-serif",
-                fontWeight: 600, // extra bold title
-              }}
-            >{t.snapshotsTitle.toUpperCase()}</h2>
-            <p className="text-sm" style={{ color: COLORS.textMuted }}>{t.snapshotsDesc}</p>
-            {[1, 2, 3].map((i) => (
-              <figure key={i} className="overflow-hidden">
-                <img src={`/screenshots/${i}.PNG`} alt="Project screenshot" className="h-56 w-full object-cover sm:h-100" />
-              </figure>
-            ))}
-          </section>
+          <Carousel t={t} />
 
           <hr className="my-10" />
-
-          {/* Team — flat list separated by hairline dividers */}
-          <section aria-labelledby="team-title" className="space-y-6">
-            <h2
-              id="team-title"
-              className="font-serif text-xl font-semibold"
-              style={{
-                fontFamily: "'Ubuntu Sans', sans-serif",
-                fontWeight: 600, // extra bold title
-              }}
-            >
-              {t.teamTitle.toUpperCase()}
-            </h2>
-            <div
-              className="p-6"
-              style={{
-                backgroundColor: COLORS.surface,
-              }}
-            >
-              {t.teamMembers.map((member: any, idx: number) => (
-                <article key={idx} className={`flex items-start gap-4 ${idx !== t.teamMembers.length - 1 ? 'mb-6 pb-6 border-b' : ''}`} style={{ borderColor: COLORS.divider }}>
-                  <div
-                    className="h-12 w-12 grid place-items-center text-sm font-semibold"
-                    style={{ backgroundColor: COLORS.surfaceMuted, color: COLORS.textMuted }}
-                  >
-                    {member.initials}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-medium" style={{ color: COLORS.text, fontFamily: "'Ubuntu Sans', sans-serif", fontWeight: 400, }}>{member.name.toUpperCase()}</h3>
-                    <p className="text-sm" style={{ color: COLORS.textMuted }}>{member.role}</p>
-                    <p className="mt-2 text-sm">
-                      <a
-                        className="inline-flex items-center gap-1 underline underline-offset-4"
-                        href={member.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ color: COLORS.link }}
-                      >
-                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" /></svg>
-                        {t.linkedinLabel}
-                      </a>
-                    </p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
+            <Features t={t} />
 
           <hr className="my-10" />
-
-          {/* Contact — square inputs, 1px borders, flat submit button */}
-          <section aria-labelledby="cta-title" className="space-y-4">
-            <h2
-              id="cta-title"
-              className="font-serif text-xl font-semibold"
-              style={{
-                fontFamily: "'Ubuntu Sans', sans-serif",
-                fontWeight: 600, // extra bold title
-              }}
-            >{t.ctaTitle.toUpperCase()}</h2>
-            <p className="text-sm" style={{ color: COLORS.textMuted }}>{t.ctaDesc}</p>
-            <form onSubmit={handleSubmit} className="space-y-3 p-0">
-              <div className="grid gap-3">
-                <label
-                  className="text-sm font-medium"
-                  htmlFor="name"
-                  style={{
-                    fontFamily: "'Ubuntu Sans', sans-serif",
-                    fontWeight: 600, // extra bold title
-                  }}
-                >{t.formName}</label>
-                <input
-                  id="name"
-                  type="text"
-                  required
-                  className="h-10 px-3 text-sm outline-none transition"
-                  style={{ backgroundColor: COLORS.surfaceMuted, border: `1px solid ${COLORS.border}`, color: COLORS.text }}
-                  onFocus={(e) => { e.currentTarget.style.borderColor = COLORS.focus; }}
-                  onBlur={(e) => { e.currentTarget.style.borderColor = COLORS.border; }}
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  placeholder={t.formNamePlaceholder}
-                />
-                <label
-                  className="text-sm font-medium"
-                  htmlFor="email"
-                  style={{
-                    fontFamily: "'Ubuntu Sans', sans-serif",
-                    fontWeight: 600, // extra bold title
-                  }}>{t.formEmail}</label>
-                <input
-                  id="email"
-                  type="email"
-                  required
-                  className="h-10 px-3 text-sm outline-none transition"
-                  style={{ backgroundColor: COLORS.surfaceMuted, border: `1px solid ${COLORS.border}`, color: COLORS.text }}
-                  onFocus={(e) => { e.currentTarget.style.borderColor = COLORS.focus; }}
-                  onBlur={(e) => { e.currentTarget.style.borderColor = COLORS.border; }}
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  placeholder={t.formEmailPlaceholder}
-                />
-                <label
-                  className="text-sm font-medium"
-                  htmlFor="message"
-                  style={{
-                    fontFamily: "'Ubuntu Sans', sans-serif",
-                    fontWeight: 600, // extra bold title
-                  }}
-                >{t.formMessage}</label>
-                <textarea
-                  id="message"
-                  required
-                  rows={5}
-                  className="px-3 py-2 text-sm outline-none transition"
-                  style={{ backgroundColor: COLORS.surfaceMuted, border: `1px solid ${COLORS.border}`, color: COLORS.text }}
-                  onFocus={(e) => { e.currentTarget.style.borderColor = COLORS.focus; }}
-                  onBlur={(e) => { e.currentTarget.style.borderColor = COLORS.border; }}
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  placeholder={t.formMessagePlaceholder}
-                />
-              </div>
-              <div className="flex items-center justify-between pt-1">
-                <button
-                  type="submit"
-                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold transition"
-                  style={{ backgroundColor: COLORS.heading, color: COLORS.selectionText }}
-                >
-                  <MailIcon />
-                  {t.formSubmit}
-                  <ArrowRight />
-                </button>
-                {sent && (
-                  <p role="status" className="text-sm" style={{ color: "#2E7D32" }}>{t.formSent}</p>
-                )}
-              </div>
-              <p className="text-xs" style={{ color: COLORS.textMuted }}>{t.formDisclaimer} {CONTACT_EMAIL}.</p>
-            </form>
-          </section>
+          <Gallery t={t} />
 
           <hr className="my-10" />
+          <Team t={t} />
 
-          {/* Footer */}
-          <footer className="text-center text-sm" style={{ color: COLORS.textMuted }}>
-            <p>
-              © {YEAR_CREATED}–{year} {t.title}. {t.footerCopyright}
-            </p>
-          </footer>
+          <hr className="my-10" />
+          <Contact t={t} />
+
+          <hr className="my-10" />
+          <Footer t={t} startYear={YEAR_CREATED} currentYear={year} />
         </div>
       </div>
     </main>

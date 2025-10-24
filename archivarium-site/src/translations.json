@@ -7,6 +7,21 @@
       "1": "Con este generador de museos podrás gestionar tus colecciones de modelos 3D como si de un museo real se tratara. Crea salas, elige las piezas estrella, añade la información que necesites. ",
       "2": "Los usuarios podrán recorrer los diferentes espacios y además observar al detalle las piezas gracias a la incorporación de un visor 3D con el que podrán ampliar y rotar con total libertad."
     },
+    "carouselTitle": "Capturas de pantalla",
+    "carouselItems": [
+      {
+        "src": "/screenshots/1.PNG",
+        "caption": "Captura del prototipo de museo virtual."
+      },
+      {
+        "src": "/screenshots/2.PNG",
+        "caption": "Captura del prototipo de museo virtual."
+      },
+      {
+        "src": "/screenshots/3.PNG",
+        "caption": "Captura del prototipo de museo virtual."
+      }
+    ],
     "featuresTitle": "Características",
     "features": [
       {
@@ -71,6 +86,21 @@
       "1": "With this museum generator you will be able to manage your 3D model collections as if it were a real museum. Create rooms, choose the star pieces, add the information you need.",
       "2": "Users will be able to tour the different spaces and also observe the pieces in detail thanks to the incorporation of a 3D viewer with which they can zoom and rotate with complete freedom."
     },
+    "carouselTitle": "Screenshots",
+    "carouselItems": [
+      {
+        "src": "/screenshots/1.PNG",
+        "caption": "Screenshot of the virtual museum prototype."
+      },
+      {
+        "src": "/screenshots/2.PNG",
+        "caption": "Screenshot of the virtual museum prototype."
+      },
+      {
+        "src": "/screenshots/3.PNG",
+        "caption": "Screenshot of the virtual museum prototype."
+      }
+    ],
     "featuresTitle": "Features",
     "features": [
       {
@@ -135,6 +165,21 @@
       "1": "Amb aquest generador de museus podràs gestionar les teves col·leccions de models 3D com si es tractés d'un museu real. Crea sales, tria les peces estrella, afegeix la informació que necessitis.",
       "2": "Els usuaris podran recórrer els diferents espais i a més observar al detall les peces gràcies a la incorporació d'un visor 3D amb el qual podran ampliar i girar amb total llibertat."
     },
+    "carouselTitle": "Captures de pantalla",
+    "carouselItems": [
+      {
+        "src": "/screenshots/1.PNG",
+        "caption": "Captura del prototip de museu virtual."
+      },
+      {
+        "src": "/screenshots/2.PNG",
+        "caption": "Captura del prototip de museu virtual."
+      },
+      {
+        "src": "/screenshots/3.PNG",
+        "caption": "Captura del prototip de museu virtual."
+      }
+    ],
     "featuresTitle": "Característiques",
     "features": [
       {
