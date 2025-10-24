@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import translations from "./translations.json";
 import { MonitorSmartphone, ChartLine, PencilRuler, Users, Palette } from "lucide-react";
+import BackgroundMosaic from "./BackgroundMosaic";
 
 // ——— Proyecto Archivarium — Sleek/Modern pass on user-attached app ———
 // Brief: apply the clean, modern style (no rounded corners, no chunky borders,
@@ -18,10 +19,10 @@ const ACCENTS = [
 export const COLORS = {
   // base
   bg: "#F5F4F2",            // light warm gray background (main column)
-  outerBg: "#E5E3DF",       // slightly darker outer background
+  outerBg: "#2e2e2eff",       // slightly darker outer background
   text: "#2B2B2B",          // main body text
   textMuted: "#5E5E5E",     // muted gray
-  heading: "#E8630A",       // orange for highlights
+  heading: "#E7872E",       // orange for highlights
   link: "#C55A11",          // warm rust-orange link
   linkHover: "#8C3F00",     // darker hover
 
@@ -92,10 +93,17 @@ export default function App() {
   return (
     <main
       // Outer canvas with a subtle contrast from the inner column — flat, no rounded corners
-      className="min-h-dvh antialiased"
-      style={{ backgroundColor: COLORS.outerBg, color: COLORS.text }}
+      className="min-h-dvh antialiased relative"
+      style={{
+        backgroundColor: COLORS.outerBg,
+        color: COLORS.text,
+        //fontFamily: "'Source Sans 3', sans-serif", // 👈 your chosen body font
+      }}
     >
+
+       <BackgroundMosaic />
       {/* Global theme (selection, links, placeholders) */}
+      {/* Global theme (selection, links, placeholders, scrollbar) */}
       <style>{`
         ::selection{background:${COLORS.selectionBg};color:${COLORS.selectionText}}
         a{color:${COLORS.link};text-underline-offset:3px}
@@ -148,80 +156,142 @@ export default function App() {
       </div>
 
       {/* Main column — full height, ~60% width, square, flat */}
-      <div className="mx-auto min-h-dvh md:w-[60vw]" style={{ backgroundColor: COLORS.bg }}>
-        <div className="w-full px-4 sm:px-6 py-14 sm:py-20">
+      <div className="mx-auto min-h-dvh md:w-[60vw] relative z-10" style={{ backgroundColor: COLORS.bg }}>
+        <div className="w-full px-4 sm:px-6 py-14 sm:py-10">
 
-          {/* Hero — simple badge, square edges, thin border, no shadow */}
+          {/* Hero Section */}
           <header className="text-center">
             <div
-              className="mx-auto mb-5 inline-flex items-center gap-2 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]"
-              style={{ backgroundColor: COLORS.surface, border: `1px solid ${COLORS.divider}`, color: COLORS.text }}
+              className="mx-auto mb-4 inline-flex items-center gap-2 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]"
+              style={{
+                backgroundColor: COLORS.surface,
+                border: `1px solid ${COLORS.divider}`,
+                color: COLORS.text,
+                fontFamily: "'Ubuntu Sans', sans-serif",
+                fontWeight: 600,
+              }}
             >
               {t.badge}
             </div>
-            <h1 className="font-serif text-4xl sm:text-5xl font-semibold leading-tight tracking-tight" style={{ color: COLORS.heading }}>
-              {t.title}
+
+            {/* Logo */}
+            <img
+              src="/logos/archivarium_logo.png"
+              alt="Proyecto Archivarium logo"
+              className="mx-auto mb-2 h-32 w-auto"
+            />
+
+            {/* Title */}
+            <h1
+  className="text-5xl sm:text-7xl font-extrabold leading-[1.1] tracking-wide"
+  style={{
+    color: COLORS.heading,
+    fontFamily: "'Ubuntu Sans', sans-serif",
+    textTransform: "uppercase",
+  }}
+>
+              {t.title.toUpperCase()}
             </h1>
-            <p className="mt-3 text-base sm:text-lg max-w-prose mx-auto" style={{ color: COLORS.text }}>
-              {t.tagline}
-            </p>
+
+            {/* Tagline */}
+            <p
+  className="mt-4 mb-6 text-lg sm:text-xl tracking-wide"
+  style={{
+    color: COLORS.textMuted,
+    fontFamily: "'Source Sans 3', sans-serif",
+    fontWeight: 400,
+  }}
+>
+  {t.tagline}
+</p>
           </header>
+
+
 
           <hr className="my-10" />
 
-          {/* Features — horizontal layout with icon before colored rule */}
-<section aria-labelledby="features-title" className="space-y-6">
-  <h2 id="features-title" className="font-serif text-xl font-semibold">
-    {t.featuresTitle}
-  </h2>
-
-  <ul className="space-y-4">
-    {t.features.map((f, i) => {
-      const a = ACCENTS[i % ACCENTS.length];
-      const icons = [MonitorSmartphone, PencilRuler, Users, Palette, ChartLine];
-      const Icon = icons[i % icons.length];
-
-      return (
-        <li
-          key={f.title}
-          className="flex items-center gap-6"
-          style={{ alignItems: "center" }} // ensures vertical centering
-        >
-          {/* Icon column */}
-          <div
-            className="flex-shrink-0 flex items-center justify-center"
-            style={{ height: "100%" }}
-          >
-            <Icon
-              size={20}
-              strokeWidth={1.8}
-              style={{ color: a.bg, flexShrink: 0 }}
-              aria-hidden="true"
-            />
-          </div>
-
-          {/* Text block with left accent line */}
-          <div
-            className="flex-1 pl-6 pt-2 pb-2"
+          {/* Description — renders all paragraphs from translations.description */}
+          <section
+            aria-label="description"
+            className="leading-relaxed py-2 pb-8 text-m sm:text-lg"
             style={{
-              borderLeft: `2px solid ${a.bg}`,
+              color: COLORS.textMuted,
             }}
           >
-            <h3
-              className="font-medium text-base mb-1"
-              style={{ color: COLORS.text }}
+            {Object.values(t.description).map((para: string, idx: number) => (
+              <p key={idx} className={idx < Object.values(t.description).length - 1 ? "mb-4" : ""}>
+                {para}
+              </p>
+            ))}
+          </section>
+
+
+
+          {/* Features — horizontal layout with icon before colored rule */}
+          <section aria-labelledby="features-title" className="space-y-6">
+            <h2
+              id="features-title"
+              className="font-serif text-xl font-semibold"
+              style={{
+                fontFamily: "'Ubuntu Sans', sans-serif",
+                fontWeight: 600, // extra bold title
+              }}
             >
-              {f.title}
-            </h3>
-            <p className="text-sm" style={{ color: COLORS.textMuted }}>
-              {f.desc}
-            </p>
-          </div>
-        </li>
-      );
-    })}
-  </ul>
-</section>
+              {t.featuresTitle.toUpperCase()}
+            </h2>
+
+            <ul className="space-y-4">
+              {t.features.map((f, i) => {
+                const a = ACCENTS[i % ACCENTS.length];
+                const icons = [MonitorSmartphone, PencilRuler, Users, Palette, ChartLine];
+                const Icon = icons[i % icons.length];
+
+                return (
+                  <li
+                    key={f.title}
+                    className="flex items-center gap-6"
+                    style={{ alignItems: "center" }} // ensures vertical centering
+                  >
+                    {/* Icon column */}
+                    <div
+                      className="flex-shrink-0 flex items-center justify-center"
+                      style={{ height: "100%" }}
+                    >
+                      <Icon
+                        size={20}
+                        strokeWidth={1.8}
+                        style={{ color: a.bg, flexShrink: 0 }}
+                        aria-hidden="true"
+                      />
+                    </div>
+
+                    {/* Text block with left accent line */}
+                    <div
+                      className="flex-1 pl-6 pt-2 pb-2"
+                      style={{
+                        borderLeft: `2px solid ${a.bg}`,
+                      }}
+                    >
+                      <h3
+                        className="font-medium text-base mb-1"
+                        style={{
+                          color: COLORS.text,
+                          fontFamily: "'Ubuntu Sans', sans-serif",
+                          fontWeight: 400, // extra bold title
+                        }}
+
+                      >
+                        {f.title.toUpperCase()}
+                      </h3>
+                      <p className="text-sm" style={{ color: COLORS.textMuted }}>
+                        {f.desc}
+                      </p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
 
 
 
@@ -229,7 +299,14 @@ export default function App() {
 
           {/* Gallery — edge-to-edge images, flat */}
           <section aria-labelledby="gallery-title" className="space-y-4">
-            <h2 id="gallery-title" className="font-serif text-xl font-semibold">{t.snapshotsTitle}</h2>
+            <h2
+              id="gallery-title"
+              className="font-serif text-xl font-semibold"
+              style={{
+                fontFamily: "'Ubuntu Sans', sans-serif",
+                fontWeight: 600, // extra bold title
+              }}
+            >{t.snapshotsTitle.toUpperCase()}</h2>
             <p className="text-sm" style={{ color: COLORS.textMuted }}>{t.snapshotsDesc}</p>
             {[1, 2, 3].map((i) => (
               <figure key={i} className="overflow-hidden">
@@ -242,8 +319,15 @@ export default function App() {
 
           {/* Team — flat list separated by hairline dividers */}
           <section aria-labelledby="team-title" className="space-y-6">
-            <h2 id="team-title" className="font-serif text-xl font-semibold">
-              {t.teamTitle}
+            <h2
+              id="team-title"
+              className="font-serif text-xl font-semibold"
+              style={{
+                fontFamily: "'Ubuntu Sans', sans-serif",
+                fontWeight: 600, // extra bold title
+              }}
+            >
+              {t.teamTitle.toUpperCase()}
             </h2>
             <div
               className="p-6"
@@ -260,7 +344,7 @@ export default function App() {
                     {member.initials}
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-medium" style={{ color: COLORS.text }}>{member.name}</h3>
+                    <h3 className="font-medium" style={{ color: COLORS.text, fontFamily: "'Ubuntu Sans', sans-serif", fontWeight: 400, }}>{member.name.toUpperCase()}</h3>
                     <p className="text-sm" style={{ color: COLORS.textMuted }}>{member.role}</p>
                     <p className="mt-2 text-sm">
                       <a
@@ -284,11 +368,25 @@ export default function App() {
 
           {/* Contact — square inputs, 1px borders, flat submit button */}
           <section aria-labelledby="cta-title" className="space-y-4">
-            <h2 id="cta-title" className="font-serif text-xl font-semibold">{t.ctaTitle}</h2>
+            <h2
+              id="cta-title"
+              className="font-serif text-xl font-semibold"
+              style={{
+                fontFamily: "'Ubuntu Sans', sans-serif",
+                fontWeight: 600, // extra bold title
+              }}
+            >{t.ctaTitle.toUpperCase()}</h2>
             <p className="text-sm" style={{ color: COLORS.textMuted }}>{t.ctaDesc}</p>
             <form onSubmit={handleSubmit} className="space-y-3 p-0">
               <div className="grid gap-3">
-                <label className="text-sm font-medium" htmlFor="name">{t.formName}</label>
+                <label
+                  className="text-sm font-medium"
+                  htmlFor="name"
+                  style={{
+                    fontFamily: "'Ubuntu Sans', sans-serif",
+                    fontWeight: 600, // extra bold title
+                  }}
+                >{t.formName}</label>
                 <input
                   id="name"
                   type="text"
@@ -301,7 +399,13 @@ export default function App() {
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   placeholder={t.formNamePlaceholder}
                 />
-                <label className="text-sm font-medium" htmlFor="email">{t.formEmail}</label>
+                <label
+                  className="text-sm font-medium"
+                  htmlFor="email"
+                  style={{
+                    fontFamily: "'Ubuntu Sans', sans-serif",
+                    fontWeight: 600, // extra bold title
+                  }}>{t.formEmail}</label>
                 <input
                   id="email"
                   type="email"
@@ -314,7 +418,14 @@ export default function App() {
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   placeholder={t.formEmailPlaceholder}
                 />
-                <label className="text-sm font-medium" htmlFor="message">{t.formMessage}</label>
+                <label
+                  className="text-sm font-medium"
+                  htmlFor="message"
+                  style={{
+                    fontFamily: "'Ubuntu Sans', sans-serif",
+                    fontWeight: 600, // extra bold title
+                  }}
+                >{t.formMessage}</label>
                 <textarea
                   id="message"
                   required

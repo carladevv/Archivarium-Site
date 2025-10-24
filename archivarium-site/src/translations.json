@@ -1,8 +1,12 @@
 {
   "ES": {
     "badge": "Patrimonio · Cultura · Educación",
-    "title": "Proyecto Archivarium",
+    "title": "Archivarium",
     "tagline": "¡El museo virtual interactivo que se adapta a cualquier colección!",
+    "description": {
+      "1": "Con este generador de museos podrás gestionar tus colecciones de modelos 3D como si de un museo real se tratara. Crea salas, elige las piezas estrella, añade la información que necesites. ",
+      "2": "Los usuarios podrán recorrer los diferentes espacios y además observar al detalle las piezas gracias a la incorporación de un visor 3D con el que podrán ampliar y rotar con total libertad."
+    },
     "featuresTitle": "Características",
     "features": [
       {
@@ -33,13 +37,13 @@
       {
         "initials": "NCC",
         "name": "Nadina Carla Cardillo",
-        "role": "Desarrolladora · Con más de 3 años de experiencia en el desarrollo web y la creación de 'serious games', Carla es la responsable del lado técnico de la aplicación mediante el uso de las librerías Node.js, ReactJS, Three.js y MongoDB.",
+        "role": "Desarrolladora web · Con más de 3 años de experiencia en el desarrollo web y la creación de 'serious games', Carla es la responsable del lado técnico de la aplicación mediante el uso de las librerías Node.js, ReactJS, Three.js y MongoDB.",
         "linkedin": "https://www.linkedin.com/in/nadina-carla-cardillo-garreta/"
       },
       {
         "initials": "LGM",
         "name": "Laura Gómez Morgado",
-        "role": "Restauradora · Laura aporta su amplia experiencia en restauración y digitalización de bienes culturales para asegurar el rigor científico y el diseño visual de la aplicación.",
+        "role": "Restauradora y especialista en Patrimonio Virtual · Laura aporta su amplia experiencia en restauración y digitalización de bienes culturales para asegurar el rigor científico y el diseño visual atractivo de la aplicación.",
         "linkedin": "https://www.linkedin.com/in/lauragmorgado/"
       }
     ],
@@ -47,9 +51,9 @@
     "ctaTitle": "¿Interesado en trabajar con nosotros?",
     "ctaDesc": "Envíanos una nota. Te responderemos en un día.",
     "formName": "Nombre",
-    "formNamePlaceholder": "Ada Lovelace",
+    "formNamePlaceholder": "Jane Doe",
     "formEmail": "Correo electrónico",
-    "formEmailPlaceholder": "ada@example.com",
+    "formEmailPlaceholder": "jane@example.com",
     "formMessage": "Mensaje",
     "formMessagePlaceholder": "Cuéntanos un poco sobre tu proyecto…",
     "formSubmit": "Enviar correo",
@@ -61,8 +65,12 @@
   },
   "EN": {
     "badge": "Heritage · Culture · Education",
-    "title": "Archivarium Project",
+    "title": "Archivarium",
     "tagline": "The interactive virtual museum that adapts to any collection!",
+    "description": {
+      "1": "With this museum generator you will be able to manage your 3D model collections as if it were a real museum. Create rooms, choose the star pieces, add the information you need.",
+      "2": "Users will be able to tour the different spaces and also observe the pieces in detail thanks to the incorporation of a 3D viewer with which they can zoom and rotate with complete freedom."
+    },
     "featuresTitle": "Features",
     "features": [
       {
@@ -93,13 +101,13 @@
       {
         "initials": "NCC",
         "name": "Nadina Carla Cardillo",
-        "role": "Developer · With over 3 years of experience in web development and creating 'serious games', Carla is responsible for the technical side of the application using Node.js, ReactJS, Three.js and MongoDB libraries.",
+        "role": "Web Developer · With over 3 years of experience in web development and creating 'serious games', Carla is responsible for the technical side of the application using Node.js, ReactJS, Three.js and MongoDB libraries.",
         "linkedin": "https://www.linkedin.com/in/nadina-carla-cardillo-garreta/"
       },
       {
         "initials": "LGM",
         "name": "Laura Gómez Morgado",
-        "role": "Restorer · Laura brings her extensive experience in restoration and digitization of cultural assets to ensure scientific rigor and visual design of the application.",
+        "role": "Restorer and Virtual Heritage Specialist · Laura brings her extensive experience in cultural heritage restoration and digitization to ensure the scientific rigor and attractive visual design of the application.",
         "linkedin": "https://www.linkedin.com/in/lauragmorgado/"
       }
     ],
@@ -107,9 +115,9 @@
     "ctaTitle": "Interested in working with us?",
     "ctaDesc": "Send us a note. We'll get back to you within a day.",
     "formName": "Name",
-    "formNamePlaceholder": "Ada Lovelace",
+    "formNamePlaceholder": "Jane Doe",
     "formEmail": "Email",
-    "formEmailPlaceholder": "ada@example.com",
+    "formEmailPlaceholder": "jane@example.com",
     "formMessage": "Message",
     "formMessagePlaceholder": "Tell us a bit about your project…",
     "formSubmit": "Send email",
@@ -121,8 +129,12 @@
   },
   "CA": {
     "badge": "Patrimoni · Cultura · Educació",
-    "title": "Projecte Archivarium",
+    "title": "Archivarium",
     "tagline": "El museu virtual interactiu que s'adapta a qualsevol col·lecció!",
+    "description": {
+      "1": "Amb aquest generador de museus podràs gestionar les teves col·leccions de models 3D com si es tractés d'un museu real. Crea sales, tria les peces estrella, afegeix la informació que necessitis.",
+      "2": "Els usuaris podran recórrer els diferents espais i a més observar al detall les peces gràcies a la incorporació d'un visor 3D amb el qual podran ampliar i girar amb total llibertat."
+    },
     "featuresTitle": "Característiques",
     "features": [
       {
@@ -153,13 +165,13 @@
       {
         "initials": "NCC",
         "name": "Nadina Carla Cardillo",
-        "role": "Desenvolupadora · Amb més de 3 anys d'experiència en el desenvolupament web i la creació de 'serious games', Carla és la responsable de la part tècnica de l'aplicació mitjançant l'ús de les llibreries Node.js, ReactJS, Three.js i MongoDB.",
+        "role": "Desenvolupadora web · Amb més de 3 anys d'experiència en el desenvolupament web i la creació de 'serious games', Carla és la responsable de la part tècnica de l'aplicació mitjançant l'ús de les llibreries Node.js, ReactJS, Three.js i MongoDB.",
         "linkedin": "https://www.linkedin.com/in/nadina-carla-cardillo-garreta/"
       },
       {
         "initials": "LGM",
         "name": "Laura Gómez Morgado",
-        "role": "Restauradora · Laura aporta la seva àmplia experiència en restauració i digitalització de béns culturals per assegurar el rigor científic i el disseny visual de l'aplicació.",
+        "role": "Restauradora i especialista en Patrimoni Virtual · Laura aporta la seva àmplia experiència en restauració i digitalització de béns culturals per assegurar el rigor científic i el disseny visual atractiu de l'aplicació.",
         "linkedin": "https://www.linkedin.com/in/lauragmorgado/"
       }
     ],
@@ -167,9 +179,9 @@
     "ctaTitle": "Interessat en treballar amb nosaltres?",
     "ctaDesc": "Envia'ns una nota. Et respondrem en un dia.",
     "formName": "Nom",
-    "formNamePlaceholder": "Ada Lovelace",
+    "formNamePlaceholder": "Jane Doe",
     "formEmail": "Correu electrònic",
-    "formEmailPlaceholder": "ada@example.com",
+    "formEmailPlaceholder": "jane@example.com",
     "formMessage": "Missatge",
     "formMessagePlaceholder": "Explica'ns una mica sobre el teu projecte…",
     "formSubmit": "Envia correu",
