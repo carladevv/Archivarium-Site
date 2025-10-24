@@ -23,7 +23,7 @@ export const COLORS = {
   text: "#2B2B2B",          // main body text
   textMuted: "#5E5E5E",     // muted gray
   heading: "#3b2d1cff",       // orange for highlights
-  link: "#C55A11",          // warm rust-orange link
+  link: "#953e04",          // warm rust-orange link
   linkHover: "#8C3F00",     // darker hover
 
   // surfaces / structure
