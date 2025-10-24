@@ -101,7 +101,7 @@ export default function App() {
       }}
     >
 
-       <BackgroundMosaic />
+      <BackgroundMosaic />
       {/* Global theme (selection, links, placeholders) */}
       {/* Global theme (selection, links, placeholders, scrollbar) */}
       <style>{`
@@ -183,27 +183,27 @@ export default function App() {
 
             {/* Title */}
             <h1
-  className="text-5xl sm:text-7xl font-extrabold leading-[1.1] tracking-wide"
-  style={{
-    color: COLORS.heading,
-    fontFamily: "'Ubuntu Sans', sans-serif",
-    textTransform: "uppercase",
-  }}
->
+              className="text-5xl sm:text-7xl font-extrabold leading-[1.1] tracking-wide"
+              style={{
+                color: COLORS.heading,
+                fontFamily: "'Ubuntu Sans', sans-serif",
+                textTransform: "uppercase",
+              }}
+            >
               {t.title.toUpperCase()}
             </h1>
 
             {/* Tagline */}
             <p
-  className="mt-4 mb-6 text-lg sm:text-xl tracking-wide"
-  style={{
-    color: COLORS.textMuted,
-    fontFamily: "'Source Sans 3', sans-serif",
-    fontWeight: 400,
-  }}
->
-  {t.tagline}
-</p>
+              className="mt-4 mb-6 text-lg sm:text-xl tracking-wide"
+              style={{
+                color: COLORS.textMuted,
+                fontFamily: "'Source Sans 3', sans-serif",
+                fontWeight: 400,
+              }}
+            >
+              {t.tagline}
+            </p>
           </header>
 
 
@@ -234,7 +234,7 @@ export default function App() {
               className="font-serif text-xl font-semibold"
               style={{
                 fontFamily: "'Ubuntu Sans', sans-serif",
-                fontWeight: 600, // extra bold title
+                fontWeight: 600,
               }}
             >
               {t.featuresTitle.toUpperCase()}
@@ -250,11 +250,11 @@ export default function App() {
                   <li
                     key={f.title}
                     className="flex items-center gap-6"
-                    style={{ alignItems: "center" }} // ensures vertical centering
+                    style={{ alignItems: "center" }}
                   >
-                    {/* Icon column */}
+                    {/* Icon column — doubled horizontal padding */}
                     <div
-                      className="flex-shrink-0 flex items-center justify-center"
+                      className="flex-shrink-0 flex items-center justify-center px-4"
                       style={{ height: "100%" }}
                     >
                       <Icon
@@ -277,9 +277,8 @@ export default function App() {
                         style={{
                           color: COLORS.text,
                           fontFamily: "'Ubuntu Sans', sans-serif",
-                          fontWeight: 400, // extra bold title
+                          fontWeight: 400,
                         }}
-
                       >
                         {f.title.toUpperCase()}
                       </h3>
@@ -292,6 +291,7 @@ export default function App() {
               })}
             </ul>
           </section>
+
 
 
 
