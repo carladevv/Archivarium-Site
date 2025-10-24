@@ -22,7 +22,7 @@ export const COLORS = {
   outerBg: "#2e2e2eff",       // slightly darker outer background
   text: "#2B2B2B",          // main body text
   textMuted: "#5E5E5E",     // muted gray
-  heading: "#E7872E",       // orange for highlights
+  heading: "#3b2d1cff",       // orange for highlights
   link: "#C55A11",          // warm rust-orange link
   linkHover: "#8C3F00",     // darker hover
 
@@ -176,7 +176,7 @@ export default function App() {
 
             {/* Logo */}
             <img
-              src="/logos/archivarium_logo.png"
+              src="/logos/archivarium_logo_2.png"
               alt="Proyecto Archivarium logo"
               className="mx-auto mb-2 h-32 w-auto"
             />
