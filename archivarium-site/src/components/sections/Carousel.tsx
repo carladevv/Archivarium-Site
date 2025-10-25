@@ -23,7 +23,7 @@ export default function Carousel({ t, intervalMs = 4500 }: Props) {
     [items]
   );
 
-  const go = (next: number) => setIdx((prev) => (next + safeItems.length) % safeItems.length);
+  const go = (next: number) => setIdx(() => (next + safeItems.length) % safeItems.length);
   const next = () => go(idx + 1);
   const prev = () => go(idx - 1);
 
