@@ -6,7 +6,7 @@ import Hero from "./components/sections/Hero";
 import Description from "./components/sections/Description";
 import Carousel from "./components/sections/Carousel";
 import Features from "./components/sections/Features";
-import Gallery from "./components/sections/Gallery";
+//import Gallery from "./components/sections/Gallery";
 import Team from "./components/sections/Team";
 import Contact from "./components/sections/Contact";
 import Footer from "./components/sections/Footer";
