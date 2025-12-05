@@ -137,8 +137,8 @@ export default function App() {
           <hr className="my-10" />
             <Features t={t} />
 
-          <hr className="my-10" />
-          <Gallery t={t} />
+          {/* <hr className="my-10" />
+          <Gallery t={t} /> */}
 
           <hr className="my-10" />
           <Team t={t} />
